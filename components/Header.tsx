@@ -1,13 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { FaSignOutAlt, FaUserCircle, FaBars } from 'react-icons/fa';
+import { FaSignOutAlt } from 'react-icons/fa';
 
 export const Header: React.FC = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  // const [setIsMobileNavOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const mobileNavRef = useRef<HTMLDivElement>(null);
 
@@ -33,7 +33,7 @@ export const Header: React.FC = () => {
         setIsDropdownOpen(false);
       }
       if (mobileNavRef.current && !mobileNavRef.current.contains(event.target as Node)) {
-        setIsMobileNavOpen(false);
+        // setIsMobileNavOpen(false);
       }
     };
 
@@ -44,79 +44,12 @@ export const Header: React.FC = () => {
   }, []);
 
   return (
-    <header className="flex h-16 items-center justify-between px-4 border-b border-neutral-700 bg-neutral-900 text-white shadow-md md:px-6 relative z-20">
+    <header className="flex w-full h-16 items-center justify-between px-4 border-b border-neutral-900 bg-neutral-950 text-white shadow-md md:px-6 2xl:px-[5rem] xl:px-[5rem] lg:px-[3rem] fixed z-20">
       <Link to={getDashboardLink()} className="flex items-center gap-2 text-xl font-bold md:text-lg text-blue-400 hover:text-blue-300 transition-colors">
         AgriConnect
       </Link>
 
-      {/* Mobile Nav Toggle */}
-      <button
-        className="md:hidden p-2 rounded-md hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}
-        aria-label="Toggle mobile navigation"
-      >
-        <FaBars className="h-5 w-5 text-white" />
-      </button>
 
-      {/* Mobile Navigation */}
-      {isMobileNavOpen && (
-        <div ref={mobileNavRef} className="absolute top-16 left-0 w-full bg-neutral-900 border-b border-neutral-700 shadow-lg md:hidden z-10">
-          <nav className="flex flex-col p-4 gap-3">
-            {user && (
-              <>
-                {user.role === 'farmer' && (
-                  <Link to="/farmer-dashboard" className="text-neutral-200 hover:text-blue-400 transition-colors py-2" onClick={() => setIsMobileNavOpen(false)}>
-                    Farmer Dashboard
-                  </Link>
-                )}
-                {user.role === 'investor' && (
-                  <Link to="/investor-dashboard" className="text-neutral-200 hover:text-blue-400 transition-colors py-2" onClick={() => setIsMobileNavOpen(false)}>
-                    Investor Dashboard
-                  </Link>
-                )}
-                {user.role === 'seller' && (
-                  <Link to="/seller-dashboard" className="text-neutral-200 hover:text-blue-400 transition-colors py-2" onClick={() => setIsMobileNavOpen(false)}>
-                    Seller Dashboard
-                  </Link>
-                )}
-                {user.role === 'buyer' && (
-                  <Link to="/buyer-dashboard" className="text-neutral-200 hover:text-blue-400 transition-colors py-2" onClick={() => setIsMobileNavOpen(false)}>
-                    Buyer Dashboard
-                  </Link>
-                )}
-              </>
-            )}
-          </nav>
-        </div>
-      )}
-
-      {/* Desktop Navigation */}
-      <nav className="hidden md:flex flex-row items-center gap-5 text-sm lg:gap-6">
-        {user && (
-          <>
-            {user.role === 'farmer' && (
-              <Link to="/farmer-dashboard" className="text-neutral-400 hover:text-blue-400 transition-colors">
-                Farmer Dashboard
-              </Link>
-            )}
-            {user.role === 'investor' && (
-              <Link to="/investor-dashboard" className="text-neutral-400 hover:text-blue-400 transition-colors">
-                Investor Dashboard
-              </Link>
-            )}
-            {user.role === 'seller' && (
-              <Link to="/seller-dashboard" className="text-neutral-400 hover:text-blue-400 transition-colors">
-                Seller Dashboard
-              </Link>
-            )}
-            {user.role === 'buyer' && (
-              <Link to="/buyer-dashboard" className="text-neutral-400 hover:text-blue-400 transition-colors">
-                Buyer Dashboard
-              </Link>
-            )}
-          </>
-        )}
-      </nav>
       <div className="flex items-center gap-4 md:ml-auto md:gap-2 lg:gap-4 relative">
         {user ? (
           <div ref={dropdownRef}>
@@ -125,7 +58,7 @@ export const Header: React.FC = () => {
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               aria-label="Toggle user menu"
             >
-              <img src="https://images.unsplash.com/photo-1535713875002-d1d0cfd293ae?w=40&h=40&fit=crop&q=80" alt="User Avatar" className="h-full w-full rounded-full object-cover" />
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face" alt="User Avatar" className="h-full w-full rounded-full object-cover" />
               <span className="sr-only">Toggle user menu</span>
             </button>
             {isDropdownOpen && (

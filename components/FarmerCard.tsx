@@ -1,5 +1,5 @@
 import React from 'react';
-import { Farmer } from '../data/dummyData';
+import type { Farmer } from '../data/dummyData';
 
 interface FarmerCardProps {
   farmer: Farmer;
@@ -8,7 +8,7 @@ interface FarmerCardProps {
 
 export const FarmerCard: React.FC<FarmerCardProps> = ({ farmer, onViewDetails }) => {
   return (
-    <div className="flex flex-col overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-[1.02] bg-neutral-800 text-neutral-100 border border-neutral-700">
+    <div className="flex flex-col overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-[1.02] bg-neutral-900 text-neutral-100 border border-neutral-800">
       <img
         src={farmer.farmImage || "/placeholder.svg?height=200&width=300&query=farm"}
         alt={farmer.name}

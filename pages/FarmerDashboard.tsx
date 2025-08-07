@@ -10,11 +10,11 @@ export const FarmerDashboard: React.FC = () => {
   );
 
   return (
-    <div className="min-h-screen flex flex-col bg-neutral-900 text-white">
+    <div className="min-h-screen flex flex-col bg-neutral-950 text-white">
       <Header />
-      <main className="flex-1 p-4 md:p-6 bg-neutral-900">
+      <main className="flex-1 p-4 md:p-6 bg-neutral-950 2xl:px-[5rem] xl:px-[5rem] lg:px-[3rem]">
         <h1 className="text-2xl font-bold mb-6">Products for Your Farm</h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 ">
           {productsForFarmers.map(product => (
             <ProductCard key={product.id} product={product} />
           ))}
