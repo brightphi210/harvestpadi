@@ -1,6 +1,7 @@
-import React, { createContext, useState, useContext, ReactNode } from 'react';
-import { DUMMY_USERS, User } from '../data/dummyData';
-
+import type { ReactNode } from 'react';
+import React, { createContext, useState, useContext } from 'react';
+import { DUMMY_USERS} from '../data/dummyData';
+import type {User } from '../data/dummyData';
 
 interface AuthContextType {
   user: User | null;
@@ -19,7 +20,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     );
     if (foundUser) {
       // Remove password before storing in context
-      const { password, ...userWithoutPassword } = foundUser;
+      const { ...userWithoutPassword } = foundUser;
       setUser(userWithoutPassword as User);
       return true;
     }
@@ -37,6 +38,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (context === undefined) {
