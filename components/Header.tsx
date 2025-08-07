@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { FaSignOutAlt } from 'react-icons/fa';
+import logo from '../src/assets/HARVESTPADI LOGO.jpg'
 
 export const Header: React.FC = () => {
   const { user, logout } = useAuth();
@@ -45,9 +46,10 @@ export const Header: React.FC = () => {
 
   return (
     <header className="flex w-full h-16 items-center justify-between px-4 border-b border-neutral-900 bg-neutral-950 text-white shadow-md md:px-6 2xl:px-[5rem] xl:px-[5rem] lg:px-[3rem] fixed z-20">
-      <Link to={getDashboardLink()} className="flex items-center gap-2 text-xl font-bold md:text-lg text-blue-400 hover:text-blue-300 transition-colors">
-        AgriConnect
+      <Link to={getDashboardLink()} className="flex items-center gap-2 text-xl font-bold md:text-lg text-green-200 hover:text-green-100 transition-colors">
+        <img src={logo} className='w-28' alt="" />
       </Link>
+
 
 
       <div className="flex items-center gap-4 md:ml-auto md:gap-2 lg:gap-4 relative">
