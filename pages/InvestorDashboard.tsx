@@ -1,32 +1,45 @@
+"use client"
+
+import type React from "react"
+
 import { useState } from "react"
-import farm1 from '../src/assets/foods/farm1.jpg'
-import farm2 from '../src/assets/foods/farm2.jpg'
-import profile from '../src/assets/foods/nigerian-farmer-portrait.png'
+import farm1 from "../src/assets/foods/farm1.jpg"
+import farm2 from "../src/assets/foods/farm2.jpg"
+import profile from "../src/assets/foods/nigerian-farmer-portrait.png"
 export default function InvestorDashboard() {
   const [activeTab, setActiveTab] = useState("farms")
+  const [showPortfolioModal, setShowPortfolioModal] = useState(false)
+
   interface Farm {
-    id: number;
-    name: string;
+    id: number
+    name: string
     farmer: {
-      name: string;
-      experience: number;
-      phone: string;
-      location: string;
-      bio: string;
-      avatar: string;
-    };
-    size: string;
-    crops: string[];
-    established: string;
-    revenue: string;
-    investment_needed: string;
-    roi_projection: string;
-    status: string;
-    image: string;
-    description: string;
+      name: string
+      experience: number
+      phone: string
+      location: string
+      bio: string
+      avatar: string
+    }
+    size: string
+    crops: string[]
+    established: string
+    revenue: string
+    investment_needed: string
+    roi_projection: string
+    status: string
+    image: string
+    description: string
   }
 
   const [selectedFarm, setSelectedFarm] = useState<Farm | null>(null)
+
+  const handlePortfolioSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    // Handle form submission logic here
+    setShowPortfolioModal(false)
+    // You can add success notification here
+  }
 
   // Mock farms data
   const farms = [
@@ -60,7 +73,7 @@ export default function InvestorDashboard() {
         phone: "+234 805 678 9012",
         location: "Kaduna State",
         bio: "Integrated farmer combining poultry and crop production. Expert in modern farming techniques and livestock management.",
-        avatar:profile,
+        avatar: profile,
       },
       size: "15 hectares",
       crops: ["Rice", "Sorghum", "Poultry (5000 birds)"],
@@ -210,6 +223,12 @@ export default function InvestorDashboard() {
                 }`}
               >
                 Investment Proposals
+              </button>
+              <button
+                onClick={() => setShowPortfolioModal(true)}
+                className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 font-medium transition-colors"
+              >
+                + Create Portfolio Project
               </button>
             </div>
           </div>
@@ -589,6 +608,162 @@ export default function InvestorDashboard() {
           </div>
         )}
       </main>
+
+      {showPortfolioModal && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6 border-b border-gray-200">
+              <div className="flex items-center justify-between">
+                <h2 className="text-2xl font-bold text-gray-900">Create Portfolio Project</h2>
+                <button
+                  onClick={() => setShowPortfolioModal(false)}
+                  className="text-gray-400 hover:text-gray-600 text-2xl"
+                >
+                  ×
+                </button>
+              </div>
+            </div>
+
+            <form onSubmit={handlePortfolioSubmit} className="p-6 space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Project Name *</label>
+                  <input
+                    type="text"
+                    required
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                    placeholder="Enter project name"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Investment Amount *</label>
+                  <input
+                    type="text"
+                    required
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                    placeholder="₦0.00"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Project Type *</label>
+                  <select
+                    required
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                  >
+                    <option value="">Select project type</option>
+                    <option value="crop-production">Crop Production</option>
+                    <option value="livestock">Livestock</option>
+                    <option value="aquaculture">Aquaculture</option>
+                    <option value="processing">Processing & Value Addition</option>
+                    <option value="infrastructure">Farm Infrastructure</option>
+                    <option value="technology">Agricultural Technology</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Expected ROI (%)</label>
+                  <input
+                    type="number"
+                    min="0"
+                    max="100"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                    placeholder="25"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Location *</label>
+                  <select
+                    required
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                  >
+                    <option value="">Select state</option>
+                    <option value="lagos">Lagos</option>
+                    <option value="ogun">Ogun</option>
+                    <option value="kaduna">Kaduna</option>
+                    <option value="kano">Kano</option>
+                    <option value="anambra">Anambra</option>
+                    <option value="rivers">Rivers</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Project Duration (months)</label>
+                  <input
+                    type="number"
+                    min="1"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                    placeholder="12"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Project Description *</label>
+                <textarea
+                  required
+                  rows={4}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                  placeholder="Describe your portfolio project, its objectives, and expected outcomes..."
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Risk Assessment</label>
+                <select className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                  <option value="">Select risk level</option>
+                  <option value="low">Low Risk</option>
+                  <option value="medium">Medium Risk</option>
+                  <option value="high">High Risk</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Target Farms/Partners</label>
+                <input
+                  type="text"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                  placeholder="Specify target farms or partner criteria"
+                />
+              </div>
+
+              <div className="flex items-center space-x-2">
+                <input
+                  type="checkbox"
+                  id="terms"
+                  required
+                  className="w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
+                />
+                <label htmlFor="terms" className="text-sm text-gray-700">
+                  I agree to the terms and conditions for portfolio project creation *
+                </label>
+              </div>
+
+              <div className="flex justify-end space-x-4 pt-4 border-t border-gray-200">
+                <button
+                  type="button"
+                  onClick={() => setShowPortfolioModal(false)}
+                  className="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-medium"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 font-medium"
+                >
+                  Create Project
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

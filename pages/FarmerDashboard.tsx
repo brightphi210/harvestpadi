@@ -1,18 +1,17 @@
+"use client"
+
 import { useState } from "react"
 
-import img1 from '../src/assets/corn-seeds.png'
-import img2 from '../src/assets/types-of-fertilizer.jpg'
-import img3 from '../src/assets/compact-tractor.png'
-import img4 from '../src/assets/solar-water-pump.png'
-import img5 from '../src/assets/fresh-red-tomatoes.png'
-import img6 from '../src/assets/drip-irrigation.png'
-import img7 from '../src/assets/investor-amina.png'
-import img9 from '../src/assets/investor-fatima.png'
-import img10 from '../src/assets/investor-tunde.png'
-import logo from '../src/assets/HARVESTPADI LOGO.jpg'
-
-
-
+import img1 from "../src/assets/corn-seeds.png"
+import img2 from "../src/assets/types-of-fertilizer.jpg"
+import img3 from "../src/assets/compact-tractor.png"
+import img4 from "../src/assets/solar-water-pump.png"
+import img5 from "../src/assets/fresh-red-tomatoes.png"
+import img6 from "../src/assets/drip-irrigation.png"
+import img7 from "../src/assets/investor-amina.png"
+import img9 from "../src/assets/investor-fatima.png"
+import img10 from "../src/assets/investor-tunde.png"
+import logo from "../src/assets/HARVESTPADI LOGO.jpg"
 
 export default function FarmersDashboard() {
   const [activeTab, setActiveTab] = useState("tools")
@@ -20,7 +19,6 @@ export default function FarmersDashboard() {
   const [priceFilter, setPriceFilter] = useState("")
   const [categoryFilter, setCategoryFilter] = useState("")
   const [locationFilter, setLocationFilter] = useState("")
-
 
   // Mock farm tools data
   const tools = [
@@ -207,7 +205,7 @@ export default function FarmersDashboard() {
       <nav className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-8">
-            <img src={logo} alt="FarmConnect Logo" className="w-28" />
+            <img src={logo || "/placeholder.svg"} alt="FarmConnect Logo" className="w-28" />
             <div className="flex space-x-6">
               <button
                 onClick={() => setActiveTab("tools")}
@@ -224,6 +222,14 @@ export default function FarmersDashboard() {
                 }`}
               >
                 Product Requests
+              </button>
+              <button
+                onClick={() => setActiveTab("investors")}
+                className={`px-4 py-2 rounded-lg font-medium ${
+                  activeTab === "investors" ? "bg-green-100 text-green-700" : "text-gray-600 hover:text-green-600"
+                }`}
+              >
+                Investors
               </button>
               <button
                 onClick={() => setActiveTab("investments")}
@@ -346,50 +352,6 @@ export default function FarmersDashboard() {
                 </div>
               ))}
             </div>
-
-            {/* Investors Section */}
-            <div className="border-t pt-12">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Connect with Investors</h3>
-              <div className="space-y-4">
-                {investors.map((investor) => (
-                  <div
-                    key={investor.id}
-                    className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-4">
-                        <img
-                          src={investor.image || "/placeholder.svg?height=60&width=60&query=professional investor"}
-                          alt={investor.name}
-                          className="w-16 h-16 rounded-full object-cover"
-                        />
-                        <div>
-                          <h4 className="text-lg font-semibold text-gray-900">{investor.name}</h4>
-                          <p className="text-gray-600">{investor.company}</p>
-                          <p className="text-sm text-gray-500">{investor.expertise}</p>
-                        </div>
-                      </div>
-                      <div className="text-right">
-                        <div className="flex items-center space-x-6 mb-2">
-                          <div className="text-center">
-                            <p className="text-2xl font-bold text-green-600">{investor.farmsInvested}</p>
-                            <p className="text-xs text-gray-500">Farms Invested</p>
-                          </div>
-                          <div className="text-center">
-                            <p className="text-lg font-bold text-gray-900">{investor.totalInvestment}</p>
-                            <p className="text-xs text-gray-500">Total Investment</p>
-                          </div>
-                        </div>
-                        <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 text-sm font-medium">
-                          Send Proposal
-                        </button>
-                      </div>
-                    </div>
-                    <p className="text-gray-600 mt-3 text-sm">{investor.bio}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         )}
 
@@ -449,6 +411,51 @@ export default function FarmersDashboard() {
                   ))}
                 </tbody>
               </table>
+            </div>
+          </div>
+        )}
+
+        {activeTab === "investors" && (
+          <div>
+            <h2 className="text-3xl font-bold text-gray-900 mb-8">Connect with Investors</h2>
+            <div className="space-y-4">
+              {investors.map((investor) => (
+                <div
+                  key={investor.id}
+                  className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-4">
+                      <img
+                        src={investor.image || "/placeholder.svg?height=60&width=60&query=professional investor"}
+                        alt={investor.name}
+                        className="w-16 h-16 rounded-full object-cover"
+                      />
+                      <div>
+                        <h4 className="text-lg font-semibold text-gray-900">{investor.name}</h4>
+                        <p className="text-gray-600">{investor.company}</p>
+                        <p className="text-sm text-gray-500">{investor.expertise}</p>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="flex items-center space-x-6 mb-2">
+                        <div className="text-center">
+                          <p className="text-2xl font-bold text-green-600">{investor.farmsInvested}</p>
+                          <p className="text-xs text-gray-500">Farms Invested</p>
+                        </div>
+                        <div className="text-center">
+                          <p className="text-lg font-bold text-gray-900">{investor.totalInvestment}</p>
+                          <p className="text-xs text-gray-500">Total Investment</p>
+                        </div>
+                      </div>
+                      <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 text-sm font-medium">
+                        Send Proposal
+                      </button>
+                    </div>
+                  </div>
+                  <p className="text-gray-600 mt-3 text-sm">{investor.bio}</p>
+                </div>
+              ))}
             </div>
           </div>
         )}
