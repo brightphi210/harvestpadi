@@ -6,6 +6,7 @@ import { useState } from "react"
 import farm1 from "../src/assets/foods/farm1.jpg"
 import farm2 from "../src/assets/foods/farm2.jpg"
 import profile from "../src/assets/foods/nigerian-farmer-portrait.png"
+import { Link } from "react-router-dom"
 export default function InvestorDashboard() {
   const [activeTab, setActiveTab] = useState("farms")
   const [showPortfolioModal, setShowPortfolioModal] = useState(false)
@@ -206,7 +207,11 @@ export default function InvestorDashboard() {
       <nav className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-8">
-            <h1 className="text-2xl font-bold text-green-600">💰 Investor Dashboard</h1>
+             <Link to="/login">
+                <div className="">
+                  <h1 className="text-2xl font-bold text-primary">🌾 HarvestPadi</h1>
+                </div>
+              </Link>
             <div className="flex space-x-6">
               <button
                 onClick={() => setActiveTab("farms")}

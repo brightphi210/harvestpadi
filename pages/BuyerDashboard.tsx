@@ -11,7 +11,7 @@ import farmer from '../src/assets/foods/nigerian-farmer-portrait.png'
 import farmer3 from '../src/assets/farmer3.jpg'
 import farmer4 from '../src/assets/farmer4.avif'
 import farmer5 from '../src/assets/farmer5.avif'
-import logo from '../src/assets/HARVESTPADI LOGO.jpg'
+import { Link } from "react-router-dom"
 
 
 const BuyersDashboard = () => {
@@ -152,7 +152,11 @@ const BuyersDashboard = () => {
       <nav className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-8">
-            <img src={logo} alt="FarmConnect Logo" className="w-28" />
+                <Link to="/login">
+                    <div className="">
+                      <h1 className="text-2xl font-bold text-primary">🌾 HarvestPadi</h1>
+                    </div>
+                  </Link>
             <div className="flex space-x-6">
               <button
                 onClick={() => setActiveTab("products")}

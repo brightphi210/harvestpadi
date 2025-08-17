@@ -4,7 +4,7 @@ import img1 from '../src/assets/corn-seeds.png'
 import img2 from '../src/assets/types-of-fertilizer.jpg'
 import img4 from '../src/assets/solar-water-pump.png'
 import img6 from '../src/assets/drip-irrigation.png'
-import logo from '../src/assets/HARVESTPADI LOGO.jpg'
+import { Link } from "react-router-dom"
 
 
 export default function SellerDashboard() {
@@ -126,7 +126,11 @@ export default function SellerDashboard() {
       <nav className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-4">
-            <img src={logo} alt="FarmConnect Logo" className="w-28" />
+                <Link to="/login">
+                    <div className="">
+                      <h1 className="text-2xl font-bold text-primary">🌾 HarvestPadi</h1>
+                    </div>
+                  </Link>
             
             <div className="flex space-x-6">
               <button

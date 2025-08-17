@@ -11,7 +11,7 @@ import img6 from "../src/assets/drip-irrigation.png"
 import img7 from "../src/assets/investor-amina.png"
 import img9 from "../src/assets/investor-fatima.png"
 import img10 from "../src/assets/investor-tunde.png"
-import logo from "../src/assets/HARVESTPADI LOGO.jpg"
+import { Link } from "react-router-dom"
 
 export default function FarmersDashboard() {
   const [activeTab, setActiveTab] = useState("tools")
@@ -205,7 +205,11 @@ export default function FarmersDashboard() {
       <nav className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-8">
-            <img src={logo || "/placeholder.svg"} alt="FarmConnect Logo" className="w-28" />
+                <Link to="/login">
+                <div className="">
+                  <h1 className="text-2xl font-bold text-primary">🌾 HarvestPadi</h1>
+                </div>
+              </Link>
             <div className="flex space-x-6">
               <button
                 onClick={() => setActiveTab("tools")}
@@ -462,7 +466,8 @@ export default function FarmersDashboard() {
 
         {activeTab === "investments" && (
           <div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">My Recent Investments</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-8">Investments</h2>
+            <p>Previous investment secured from investors</p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {recentInvestments.map((investment) => (
                 <div
@@ -500,7 +505,7 @@ export default function FarmersDashboard() {
           </div>
         )}
 
-        {activeTab === "post-farm" && (
+        {/* {activeTab === "post-farm" && (
           <div>
             <h2 className="text-3xl font-bold text-gray-900 mb-8">Post New Farm Project</h2>
             <div className="bg-white border border-gray-200 rounded-lg p-8">
@@ -599,7 +604,7 @@ export default function FarmersDashboard() {
               </form>
             </div>
           </div>
-        )}
+        )} */}
       </main>
     </div>
   )
