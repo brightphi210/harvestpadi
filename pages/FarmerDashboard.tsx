@@ -2,15 +2,17 @@
 
 import { useState } from "react"
 
-import img1 from "../src/assets/corn-seeds.png"
-import img2 from "../src/assets/types-of-fertilizer.jpg"
-import img3 from "../src/assets/compact-tractor.png"
-import img4 from "../src/assets/solar-water-pump.png"
+import img1 from "../src/assets/ugu.jpg"
+import img2 from "../src/assets/maure.jpg"
+import img3 from "../src/assets/cabbage.webp"
+// import img3 from "../src/assets/compact-tractor.png"
+import img4 from "../src/assets/pepper.webp"
 import img5 from "../src/assets/fresh-red-tomatoes.png"
 import img6 from "../src/assets/drip-irrigation.png"
-import img7 from "../src/assets/investor-amina.png"
-import img9 from "../src/assets/investor-fatima.png"
-import img10 from "../src/assets/investor-tunde.png"
+import img7a from "../src/assets/carrot.jpg"
+import img7 from "../src/assets/logo1.png"
+import img9 from "../src/assets/investor-amina.png"
+import img10 from "../src/assets/logo2.png"
 import { Link } from "react-router-dom"
 
 export default function FarmersDashboard() {
@@ -24,43 +26,43 @@ export default function FarmersDashboard() {
   const tools = [
     {
       id: 1,
-      name: "Hybrid Corn Seeds",
+      name: "Pumpkin Seeds",
       price: 15000,
       category: "Seeds",
       location: "Lagos",
       seller: "AgroSeeds Nigeria",
       image: img1,
-      description: "High-yield hybrid corn seeds suitable for Nigerian climate",
+      description: "High-yield Pumpkin Seeds, suitable for Nigerian climate",
     },
     {
       id: 2,
-      name: "NPK Fertilizer 15-15-15",
+      name: "Organic Fertilizer",
       price: 25000,
       category: "Fertilizers",
       location: "Kano",
       seller: "FarmChem Ltd",
       image: img2,
-      description: "Premium NPK fertilizer for optimal crop growth",
+      description: "Premium Organic fertilizer for optimal crop growth",
     },
     {
       id: 3,
-      name: "John Deere Compact Tractor",
+      name: "Cabbage ",
       price: 8500000,
-      category: "Tractors",
+      category: "Seeds",
       location: "Abuja",
       seller: "AgriMachinery Nigeria",
       image: img3,
-      description: "Reliable compact tractor for small to medium farms",
+      description: "Organic Cabbage Seeds, perfect for local farming",
     },
     {
       id: 4,
-      name: "Solar Water Pump System",
+      name: "Organic Pepper Seeds",
       price: 450000,
-      category: "Solar Energy",
+      category: "Seeds",
       location: "Kaduna",
       seller: "SolarFarm Solutions",
       image: img4,
-      description: "Efficient solar-powered irrigation system",
+      description: "Organic pepper seeds for high yield production",
     },
     {
       id: 5,
@@ -82,13 +84,24 @@ export default function FarmersDashboard() {
       image: img6,
       description: "Complete drip irrigation system for water-efficient farming",
     },
+
+    {
+      id: 7,
+      name: "Organic Carrot Seeds",
+      price: 75000,
+      category: "seeds",
+      location: "Rivers",
+      seller: "WaterWise Agro",
+      image: img7a,
+      description: "Orangic Carrot Seeds for high yield production",
+    },
   ]
 
   // Mock investors data
   const investors = [
     {
       id: 1,
-      name: "Dr. Amina Hassan",
+      name: "AgriVest Capital",
       company: "AgriVest Capital",
       farmsInvested: 23,
       totalInvestment: "₦2.5B",
@@ -96,16 +109,7 @@ export default function FarmersDashboard() {
       expertise: "Crop production, Livestock, Agtech",
       image: img7,
     },
-    {
-      id: 2,
-      name: "Chief Emeka Okafor",
-      company: "Green Valley Investments",
-      farmsInvested: 18,
-      totalInvestment: "₦1.8B",
-      bio: "Former Minister of Agriculture, now leading agricultural investment initiatives",
-      expertise: "Policy, Infrastructure, Value chain development",
-      image: img10,
-    },
+   
     {
       id: 3,
       name: "Mrs. Fatima Abdullahi",
@@ -116,14 +120,15 @@ export default function FarmersDashboard() {
       expertise: "Financial structuring, Risk management, Cooperative farming",
       image: img9,
     },
-    {
-      id: 4,
-      name: "Mr. Tunde Adebayo",
-      company: "Lagos Agri Partners",
-      farmsInvested: 12,
-      totalInvestment: "₦950M",
-      bio: "Tech entrepreneur focused on digital agriculture and smart farming solutions",
-      expertise: "Agtech, Digital platforms, Supply chain optimization",
+
+     {
+      id: 2,
+      name: "Green Valley Investments",
+      company: "Green Valley Investments",
+      farmsInvested: 18,
+      totalInvestment: "₦1.8B",
+      bio: "Former Minister of Agriculture, now leading agricultural investment initiatives",
+      expertise: "Policy, Infrastructure, Value chain development",
       image: img10,
     },
   ]
@@ -243,14 +248,7 @@ export default function FarmersDashboard() {
               >
                 My Investments
               </button>
-              <button
-                onClick={() => setActiveTab("post-farm")}
-                className={`px-4 py-2 rounded-lg font-medium ${
-                  activeTab === "post-farm" ? "bg-green-100 text-green-700" : "text-gray-600 hover:text-green-600"
-                }`}
-              >
-                Post New Farm
-              </button>
+             
             </div>
           </div>
 
@@ -322,7 +320,8 @@ export default function FarmersDashboard() {
       <main className="max-w-6xl mx-auto px-6 py-8">
         {activeTab === "tools" && (
           <div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">Farm Tools & Equipment</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">Farmers Tools & Equipment</h2>
+            <p className="pb-8">A Market place where farmers needs everything to kick of there farming and make life easy for themselves</p>
 
             {/* Tools Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
@@ -361,7 +360,8 @@ export default function FarmersDashboard() {
 
         {activeTab === "requests" && (
           <div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">Product Requests</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">Product Requests</h2>
+            <p className="pb-8">Product requested by users</p>
             <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
               <table className="w-full">
                 <thead className="bg-gray-50">
@@ -421,7 +421,9 @@ export default function FarmersDashboard() {
 
         {activeTab === "investors" && (
           <div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">Connect with Investors</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">Connect with Investors</h2>
+            <p className="pb-8">Connect with investors to get funds for farm your projects</p>
+
             <div className="space-y-4">
               {investors.map((investor) => (
                 <div
@@ -466,8 +468,8 @@ export default function FarmersDashboard() {
 
         {activeTab === "investments" && (
           <div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">Investments</h2>
-            <p>Previous investment secured from investors</p>
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">Investments</h2>
+            <p className="pb-8">Previous investment secured from investors</p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {recentInvestments.map((investment) => (
                 <div

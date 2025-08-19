@@ -7,10 +7,20 @@ import food3 from '../src/assets/foods/food1.jpg'
 import food4 from '../src/assets/foods/ripe-plantain.png'
 import food5 from '../src/assets/foods/rice-grains.png'
 import food6 from '../src/assets/foods/food2.webp'
-import farmer from '../src/assets/foods/nigerian-farmer-portrait.png'
-import farmer3 from '../src/assets/farmer3.jpg'
-import farmer4 from '../src/assets/farmer4.avif'
+import farmer from '../src/assets/foods/farm1.jpg'
+import farmer3 from '../src/assets/foods/farm2.jpg'
+import farmer4 from '../src/assets/foods/farm1.jpg'
 import farmer5 from '../src/assets/farmer5.avif'
+
+
+import img1 from "../src/assets/ugu.jpg"
+import img2 from "../src/assets/maure.jpg"
+import img3 from "../src/assets/cabbage.webp"
+import img4 from "../src/assets/pepper.webp"
+import img5 from "../src/assets/fresh-red-tomatoes.png"
+import img6 from "../src/assets/drip-irrigation.png"
+import img7a from "../src/assets/carrot.jpg"
+
 import { Link } from "react-router-dom"
 
 
@@ -146,6 +156,95 @@ const BuyersDashboard = () => {
     setShowRequestForm(false)
   }
 
+
+    const tools = [
+    {
+      id: 1,
+      name: "Pumpkin Seeds",
+      price: 15000,
+      category: "Seeds",
+      location: "Lagos",
+      seller: "AgroSeeds Nigeria",
+      image: img1,
+      description: "High-yield Pumpkin Seeds, suitable for Nigerian climate",
+    },
+    {
+      id: 2,
+      name: "Organic Fertilizer",
+      price: 25000,
+      category: "Fertilizers",
+      location: "Kano",
+      seller: "FarmChem Ltd",
+      image: img2,
+      description: "Premium Organic fertilizer for optimal crop growth",
+    },
+    {
+      id: 3,
+      name: "Cabbage ",
+      price: 8500000,
+      category: "Seeds",
+      location: "Abuja",
+      seller: "AgriMachinery Nigeria",
+      image: img3,
+      description: "Organic Cabbage Seeds, perfect for local farming",
+    },
+    {
+      id: 4,
+      name: "Organic Pepper Seeds",
+      price: 450000,
+      category: "Seeds",
+      location: "Kaduna",
+      seller: "SolarFarm Solutions",
+      image: img4,
+      description: "Organic pepper seeds for high yield production",
+    },
+    {
+      id: 5,
+      name: "Organic Tomato Seeds",
+      price: 8000,
+      category: "Seeds",
+      location: "Ogun",
+      seller: "GreenSeeds Co",
+      image: img5,
+      description: "Certified organic tomato seeds for greenhouse farming",
+    },
+    {
+      id: 6,
+      name: "Drip Irrigation Kit",
+      price: 75000,
+      category: "Irrigation",
+      location: "Rivers",
+      seller: "WaterWise Agro",
+      image: img6,
+      description: "Complete drip irrigation system for water-efficient farming",
+    },
+
+    {
+      id: 7,
+      name: "Organic Carrot Seeds",
+      price: 75000,
+      category: "seeds",
+      location: "Rivers",
+      seller: "WaterWise Agro",
+      image: img7a,
+      description: "Orangic Carrot Seeds for high yield production",
+    },
+  ]
+ const filteredTools = tools.filter((tool) => {
+    const matchesSearch =
+      tool.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      tool.seller.toLowerCase().includes(searchTerm.toLowerCase())
+    const matchesPrice =
+      !priceFilter ||
+      (priceFilter === "low" && tool.price < 50000) ||
+      (priceFilter === "medium" && tool.price >= 50000 && tool.price < 500000) ||
+      (priceFilter === "high" && tool.price >= 500000)
+    const matchesCategory = !categoryFilter || tool.category === categoryFilter
+    const matchesLocation = !locationFilter || tool.location === locationFilter
+
+    return matchesSearch && matchesPrice && matchesCategory && matchesLocation
+  })
+
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
@@ -166,6 +265,17 @@ const BuyersDashboard = () => {
               >
                 Products
               </button>
+
+               <button
+                onClick={() => setActiveTab("sellers")}
+                className={`px-4 py-2 rounded-lg font-medium ${
+                  activeTab === "farmers" ? "bg-green-100 text-green-700" : "text-gray-600 hover:text-green-600"
+                }`}
+              >
+                Sellers
+              </button>
+
+
               <button
                 onClick={() => setActiveTab("farmers")}
                 className={`px-4 py-2 rounded-lg font-medium ${
@@ -243,7 +353,8 @@ const BuyersDashboard = () => {
       <main className="max-w-5xl mx-auto px-6 py-8">
         {activeTab === "products" && (
           <div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">Fresh Farm Products</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">Fresh Farm Products</h2>
+            <p className="pb-8">Explore fresh organic farm products, directly from the farm</p>
 
             {/* Products Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
@@ -307,9 +418,52 @@ const BuyersDashboard = () => {
           </div>
         )}
 
+
+        {activeTab === "sellers" && (
+          <div>
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">Farmers Tools & Equipment</h2>
+            <p className="pb-8">A Market place where farmers needs everything to kick of there farming and make life easy for themselves</p>
+
+            {/* Tools Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+              {filteredTools.map((tool) => (
+                <div
+                  key={tool.id}
+                  className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                >
+                  <img
+                    src={tool.image || "/placeholder.svg?height=200&width=300&query=farm equipment"}
+                    alt={tool.name}
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-6">
+                    <div className="flex justify-between items-start mb-2">
+                      <h3 className="text-xl font-semibold text-gray-900">{tool.name}</h3>
+                      <span className="text-lg font-bold text-green-600">₦{tool.price.toLocaleString()}</span>
+                    </div>
+                    <p className="text-gray-600 mb-3">{tool.description}</p>
+                    <div className="flex justify-between items-center text-sm text-gray-500 mb-4">
+                      <span>📍 {tool.location}</span>
+                      <span>🏷️ {tool.category}</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm text-gray-600">by {tool.seller}</span>
+                      <button className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 text-sm font-medium">
+                        Contact Seller
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {activeTab === "farmers" && (
           <div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">Our Farmers</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">Farms</h2>
+            <p className="pb-8">Farms around you</p>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {farmers.map((farmer) => (
                 <div
@@ -320,7 +474,7 @@ const BuyersDashboard = () => {
                     <img
                       src={farmer.image || "/placeholder.svg"}
                       alt={farmer.name}
-                      className="w-24 h-24 rounded-full object-cover"
+                      className="w-24 h-24 rounded-lg object-cover"
                     />
                     <div className="flex-1">
                       <h3 className="text-xl font-semibold text-gray-900 mb-2">{farmer.name}</h3>

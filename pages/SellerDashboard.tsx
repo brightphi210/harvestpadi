@@ -1,9 +1,9 @@
 import { useState } from "react"
 
-import img1 from '../src/assets/corn-seeds.png'
-import img2 from '../src/assets/types-of-fertilizer.jpg'
-import img4 from '../src/assets/solar-water-pump.png'
-import img6 from '../src/assets/drip-irrigation.png'
+import img1 from '../src/assets/cabbage.webp'
+import img2 from '../src/assets/maure.jpg'
+import img4 from '../src/assets/pepper.webp'
+import img6 from '../src/assets/ugu.jpg'
 import { Link } from "react-router-dom"
 
 
@@ -14,7 +14,7 @@ export default function SellerDashboard() {
   const myProducts = [
     {
       id: 1,
-      name: "Hybrid Corn Seeds",
+      name: "Cabbage Seeds",
       price: 15000,
       category: "Seeds",
       stock: 150,
@@ -24,7 +24,7 @@ export default function SellerDashboard() {
     },
     {
       id: 2,
-      name: "NPK Fertilizer 15-15-15",
+      name: "Organic Fertilizer",
       price: 25000,
       category: "Fertilizers",
       stock: 80,
@@ -34,9 +34,9 @@ export default function SellerDashboard() {
     },
     {
       id: 3,
-      name: "Solar Water Pump System",
+      name: "Pepper Seed",
       price: 450000,
-      category: "Solar Energy",
+      category: "Seeds",
       stock: 5,
       sold: 2,
       image: img4,
@@ -44,9 +44,9 @@ export default function SellerDashboard() {
     },
     {
       id: 4,
-      name: "Drip Irrigation Kit",
+      name: "Pumpkin Seeds",
       price: 75000,
-      category: "Irrigation",
+      category: "Seeds",
       stock: 25,
       sold: 18,
       image: img6,
@@ -262,7 +262,7 @@ export default function SellerDashboard() {
                         request.status === "New"
                           ? "bg-neutral-100 text-neutral-800"
                           : request.status === "Responded"
-                            ? "bg-yellow-100 text-yellow-800"
+                            ? "bg-yellow-100 text-yellow-600"
                             : "bg-green-100 text-green-800"
                       }`}
                     >
@@ -296,10 +296,7 @@ export default function SellerDashboard() {
                       {request.status === "New" && (
                         <>
                           <button className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 text-sm font-medium">
-                            Accept Request
-                          </button>
-                          <button className="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 text-sm font-medium">
-                            Send Message
+                            View Request
                           </button>
                         </>
                       )}

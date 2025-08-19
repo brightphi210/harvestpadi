@@ -184,7 +184,7 @@ export default function InvestorDashboard() {
       amount: "₦2.2M",
       purpose: "Fish Pond Expansion",
       date: "2024-01-10",
-      status: "Pending",
+      status: "Under Review",
       description: "Expansion of fish farming operations with 5 new ponds and improved water circulation systems.",
       documents: ["Technical Drawings.pdf", "Environmental Impact.pdf", "Financial Plan.xlsx"],
     },
@@ -195,7 +195,7 @@ export default function InvestorDashboard() {
       amount: "₦1.8M",
       purpose: "Rice Mill Construction",
       date: "2024-01-08",
-      status: "Under Review",
+      status: "Approved",
       description: "Building a small-scale rice mill to process farm produce and serve the local community.",
       documents: ["Construction Plan.pdf", "Community Impact.pdf", "Revenue Projections.xlsx"],
     },
@@ -252,7 +252,11 @@ export default function InvestorDashboard() {
         {activeTab === "farms" && !selectedFarm && (
           <div>
             <div className="flex justify-between items-center mb-8">
-              <h2 className="text-3xl font-bold text-gray-900">Available Farms for Investment</h2>
+              <div>
+                <h2 className="text-3xl font-bold text-gray-900 pb-3">Available Farms for Investment</h2>
+                <p className="">Explore available farm for investments</p>
+              </div>
+
               <div className="flex items-center space-x-4">
                 <select className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500">
                   <option>All States</option>
@@ -450,15 +454,6 @@ export default function InvestorDashboard() {
                       <p className="text-2xl font-bold text-purple-600">{selectedFarm.roi_projection}</p>
                     </div>
                   </div>
-
-                  <div className="mt-6 flex space-x-4">
-                    <button className="flex-1 bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 font-medium">
-                      Invest Now
-                    </button>
-                    <button className="flex-1 bg-gray-100 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-200 font-medium">
-                      Request More Info
-                    </button>
-                  </div>
                 </div>
               </div>
 
@@ -480,10 +475,6 @@ export default function InvestorDashboard() {
                     <div className="flex justify-between">
                       <span className="text-gray-600">Experience:</span>
                       <span className="font-medium">{selectedFarm.farmer.experience} years</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Phone:</span>
-                      <span className="font-medium">{selectedFarm.farmer.phone}</span>
                     </div>
                   </div>
 
@@ -526,7 +517,9 @@ export default function InvestorDashboard() {
 
         {activeTab === "proposals" && (
           <div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">Investment Proposals</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">Investment Proposals</h2>
+            <p className="pb-8">Investment Proposal from farmers</p>
+
             <div className="space-y-6">
               {proposals.map((proposal) => (
                 <div
