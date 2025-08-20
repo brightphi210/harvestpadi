@@ -9,7 +9,7 @@ export const LoginForm: React.FC = () => {
         {/* Logo and Title */}
         <Link to="/">
          <div className="text-center mb-8">
-            <h1 className="text-2xl font-bold text-primary">🌾 HarvestPadi</h1>
+            <h1 className="text-2xl font-bold text-primary text-orange-500">🌾 Harvest<span className='bg-green-600 text-white p-0.5 px-1.5 rounded'>Padi</span></h1>
           </div>
         </Link>
 
@@ -22,7 +22,8 @@ export const LoginForm: React.FC = () => {
             <button className="bg-green-50 border border-green-200 rounded-xl py-2.5 text-sm w-full text-green-800 font-semibold cursor-pointer">Buyer</button>
           </Link>
 
-          <Link to={'/farmer'}>
+          {/* <Link to={'/farmer'}> */}
+          <Link to={'https://harvestpadi.onrender.com/'}>
             <button className="bg-green-50 border border-green-200 rounded-xl py-2.5 text-sm w-full text-green-800 font-semibold cursor-pointer">Farmer</button>
           </Link>
 

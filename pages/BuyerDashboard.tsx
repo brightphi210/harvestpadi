@@ -2,10 +2,9 @@ import type React from "react"
 
 import { useState } from "react"
 import food1 from '../src/assets/foods/fresh-red-tomatoes.png'
-import food2 from '../src/assets/foods/yam-tubers.png'
 import food3 from '../src/assets/foods/food1.jpg'
-import food4 from '../src/assets/foods/ripe-plantain.png'
-import food5 from '../src/assets/foods/rice-grains.png'
+import food4 from '../src/assets/onion.jpg'
+import food5 from '../src/assets/carrot2.webp'
 import food6 from '../src/assets/foods/food2.webp'
 import farmer from '../src/assets/foods/farm1.jpg'
 import farmer3 from '../src/assets/foods/farm2.jpg'
@@ -46,53 +45,53 @@ const BuyersDashboard = () => {
     },
     {
       id: 2,
-      name: "Yam Tubers",
+      name: "Organic Onions",
       price: 5000,
-      category: "Tubers",
+      category: "vegetables",
       location: "Ogun",
       farmer: "Ogundimu Farms",
-      image: food2,
-      description: "Premium yam tubers from Ogun state",
+      image: food4,
+      description: "Premium onions from Ogun state",
     },
     {
       id: 3,
-      name: "Palm Oil",
+      name: "Fresh Pepper",
       price: 8000,
       category: "Oil",
       location: "Rivers",
       farmer: "Niger Delta Farms",
       image: food3,
-      description: "Pure palm oil from Rivers state",
+      description: "Pure Pepper from Rivers state",
     },
     {
       id: 4,
-      name: "Plantain",
+      name: "Cabbage",
       price: 1500,
       category: "Fruits",
       location: "Oyo",
       farmer: "Ibadan Fresh Farms",
-      image: food4,
-      description: "Sweet plantain from Oyo state",
+      image: img3,
+      description: "Fresh Cabbage from Oyo state",
     },
     {
       id: 5,
-      name: "Rice",
+      name: "Carrot",
       price: 12000,
-      category: "Grains",
+      category: "vegetables",
       location: "Kebbi",
       farmer: "Argungu Rice Mills",
       image: food5,
-      description: "Premium rice from Kebbi state",
+      description: "Premium Carrot from Kebbi state",
     },
     {
       id: 6,
-      name: "Cassava",
+      name: "Vegetables",
       price: 3000,
-      category: "Tubers",
+      category: "Vegetables",
       location: "Benue",
       farmer: "Middle Belt Farms",
       image: food6,
-      description: "Fresh cassava from Benue state",
+      description: "Fresh Vegetables from Benue state",
     },
   ]
 
@@ -180,7 +179,7 @@ const BuyersDashboard = () => {
     },
     {
       id: 3,
-      name: "Cabbage ",
+      name: "Cabbage Seed",
       price: 8500000,
       category: "Seeds",
       location: "Abuja",
@@ -253,7 +252,7 @@ const BuyersDashboard = () => {
           <div className="flex items-center space-x-8">
                 <Link to="/login">
                     <div className="">
-                      <h1 className="text-2xl font-bold text-primary">🌾 HarvestPadi</h1>
+                      <h1 className="text-2xl font-bold text-primary text-orange-500">🌾 Harvest<span className='bg-green-600 text-white p-0.5 px-1.5 rounded'>Padi</span></h1>
                     </div>
                   </Link>
             <div className="flex space-x-6">

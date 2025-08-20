@@ -209,7 +209,7 @@ export default function InvestorDashboard() {
           <div className="flex items-center space-x-8">
              <Link to="/login">
                 <div className="">
-                  <h1 className="text-2xl font-bold text-primary">🌾 HarvestPadi</h1>
+                      <h1 className="text-2xl font-bold text-primary text-orange-500">🌾 Harvest<span className='bg-green-600 text-white p-0.5 px-1.5 rounded'>Padi</span></h1>
                 </div>
               </Link>
             <div className="flex space-x-6">
