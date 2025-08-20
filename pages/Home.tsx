@@ -9,7 +9,7 @@ export default function Home() {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <h1 className="text-2xl font-bold text-primary">🌾 HarvestPadi</h1>
+                  <h1 className="text-2xl font-bold text-primary text-orange-500">🌾 Harvest<span className='bg-green-600 text-white p-0.5 px-1.5 rounded'>Padi</span></h1>
               </div>
             </div>
             <nav className="hidden md:block">
