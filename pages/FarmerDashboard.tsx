@@ -15,6 +15,13 @@ import img9 from "../src/assets/investor-amina.png"
 import img10 from "../src/assets/logo2.png"
 import { Link } from "react-router-dom"
 
+import solar1 from '../src/assets/solar/solar-water-pump.png'
+import solar2 from '../src/assets/solar/windturbing.jpg'
+import solar3 from '../src/assets/solar/solarpump.avif'
+import solar4 from '../src/assets/solar/battery.webp'
+import solar5 from '../src/assets/solar/solar-greenhouse.png'
+import solar6 from '../src/assets/solar/windturbing.jpg'
+
 export default function FarmersDashboard() {
   const [activeTab, setActiveTab] = useState("tools")
   const [searchTerm, setSearchTerm] = useState("")
@@ -197,7 +204,7 @@ export default function FarmersDashboard() {
       category: "Solar Energy",
       location: "Lagos",
       seller: "SolarTech Nigeria",
-      image: "/solar-panels-farm.png",
+      image: solar1,
       description: "High-efficiency 300W solar panel kit perfect for farm irrigation and lighting systems",
     },
     {
@@ -207,7 +214,7 @@ export default function FarmersDashboard() {
       category: "Wind Energy",
       location: "Kano",
       seller: "WindPower Solutions",
-      image: "/wind-turbine-rural.png",
+      image: solar2,
       description: "Small-scale wind turbine ideal for rural farming operations and remote locations",
     },
     {
@@ -217,7 +224,7 @@ export default function FarmersDashboard() {
       category: "Solar Energy",
       location: "Abuja",
       seller: "AquaSolar Ltd",
-      image: "/solar-water-pump.png",
+      image: solar3,
       description: "Complete solar-powered water pumping system for irrigation and livestock watering",
     },
     {
@@ -227,7 +234,7 @@ export default function FarmersDashboard() {
       category: "Energy Storage",
       location: "Rivers",
       seller: "PowerStore Nigeria",
-      image: "/battery-storage-system.png",
+      image: solar4,
       description: "Lithium-ion battery storage system for storing renewable energy for 24/7 farm operations",
     },
     {
@@ -237,7 +244,7 @@ export default function FarmersDashboard() {
       category: "Solar Energy",
       location: "Ogun",
       seller: "GreenHouse Solar",
-      image: "/solar-greenhouse.png",
+      image: solar5,
       description: "Complete solar-powered greenhouse system with climate control and automated irrigation",
     },
     {
@@ -247,7 +254,7 @@ export default function FarmersDashboard() {
       category: "Biogas",
       location: "Kaduna",
       seller: "BioEnergy Solutions",
-      image: "/biogas-digester.png",
+      image: solar6,
       description: "Anaerobic biogas digester system that converts farm waste into clean cooking gas and fertilizer",
     },
   ]
@@ -326,14 +333,18 @@ export default function FarmersDashboard() {
               >
                 My Investments
               </button>
+
+            <Link to="/energy">
               <button
-                onClick={() => setActiveTab("renewable-energy")}
+                // onClick={() => setActiveTab("renewable-energy")}
                 className={`px-4 py-2 rounded-lg font-medium ${
                   activeTab === "renewable-energy" ? "bg-teal-100 text-teal-700" : "text-gray-600 hover:text-teal-600"
                 }`}
               >
                 Renewable Energy
               </button>
+            </Link>
+
             </div>
           </div>
 

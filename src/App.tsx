@@ -6,6 +6,7 @@ import FarmersDashboard from '../pages/FarmerDashboard';
 import SellerDashboard from '../pages/SellerDashboard';
 import InvestorDashboard from '../pages/InvestorDashboard';
 import Home from '../pages/Home';
+import EnergyDashboard from '../pages/EnergyDashboard';
 
 
 const App: React.FC = () => {
@@ -18,6 +19,7 @@ const App: React.FC = () => {
         <Route path="/farmer" element={<FarmersDashboard />} />
         <Route path="/seller" element={<SellerDashboard />} />
         <Route path="/investor" element={<InvestorDashboard />} />
+        <Route path="/energy" element={<EnergyDashboard />} />
       </Routes>
     </Router>
   );
