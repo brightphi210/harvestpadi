@@ -15,15 +15,15 @@ import img9 from "../src/assets/investor-amina.png"
 import img10 from "../src/assets/logo2.png"
 import { Link } from "react-router-dom"
 
-import solar1 from '../src/assets/solar/solar-water-pump.png'
-import solar2 from '../src/assets/solar/windturbing.jpg'
-import solar3 from '../src/assets/solar/solarpump.avif'
-import solar4 from '../src/assets/solar/battery.webp'
-import solar5 from '../src/assets/solar/solar-greenhouse.png'
-import solar6 from '../src/assets/solar/windturbing.jpg'
+import solar1 from "../src/assets/solar/solar-water-pump.png"
+import solar2 from "../src/assets/solar/windturbing.jpg"
+import solar3 from "../src/assets/solar/solarpump.avif"
+import solar4 from "../src/assets/solar/battery.webp"
+import solar5 from "../src/assets/solar/solar-greenhouse.png"
+import solar6 from "../src/assets/solar/windturbing.jpg"
 
 export default function FarmersDashboard() {
-  const [activeTab, setActiveTab] = useState("tools")
+  const [activeTab, setActiveTab] = useState("sellers")
   const [searchTerm, setSearchTerm] = useState("")
   const [priceFilter, setPriceFilter] = useState("")
   const [categoryFilter, setCategoryFilter] = useState("")
@@ -101,6 +101,69 @@ export default function FarmersDashboard() {
       seller: "WaterWise Agro",
       image: img7a,
       description: "Orangic Carrot Seeds for high yield production",
+    },
+  ]
+
+  const buyers = [
+    {
+      id: 1,
+      name: "Fresh Foods Ltd",
+      location: "Lagos, Nigeria",
+      rating: 4.8,
+      type: "Buyer",
+      description: "Premium tomatoes and peppers for retail chains",
+      priceOffer: "₦850/kg for Grade A tomatoes",
+      image: "/food-company-logo.png",
+      contactInfo: "Contact for bulk orders",
+      specialization: "Retail Supply Chain",
+    },
+    {
+      id: 2,
+      name: "Market Square Co-op",
+      location: "Abuja, Nigeria",
+      rating: 4.6,
+      type: "Buyer",
+      description: "Bulk purchasing for local markets",
+      priceOffer: "₦720/kg for mixed peppers",
+      image: "/cooperative-market-logo.png",
+      contactInfo: "Contact for wholesale deals",
+      specialization: "Local Market Distribution",
+    },
+    {
+      id: 3,
+      name: "Export Partners Inc",
+      location: "Port Harcourt, Nigeria",
+      rating: 4.9,
+      type: "Buyer",
+      description: "International export of premium Nigerian produce",
+      priceOffer: "₦1,200/kg for export quality yams",
+      image: "/export-company-logo.png",
+      contactInfo: "Contact for export opportunities",
+      specialization: "International Export",
+    },
+    {
+      id: 4,
+      name: "Green Valley Processors",
+      location: "Kano, Nigeria",
+      rating: 4.7,
+      type: "Buyer",
+      description: "Food processing and packaging company",
+      priceOffer: "₦650/kg for processing tomatoes",
+      image: "/food-processing-logo.png",
+      contactInfo: "Contact for processing contracts",
+      specialization: "Food Processing",
+    },
+    {
+      id: 5,
+      name: "Urban Fresh Markets",
+      location: "Ibadan, Nigeria",
+      rating: 4.5,
+      type: "Buyer",
+      description: "Modern supermarket chain seeking fresh produce",
+      priceOffer: "₦900/kg for organic vegetables",
+      image: "/generic-supermarket-logo.png",
+      contactInfo: "Contact for supply agreements",
+      specialization: "Retail Supermarkets",
     },
   ]
 
@@ -274,6 +337,16 @@ export default function FarmersDashboard() {
     return matchesSearch && matchesPrice && matchesCategory && matchesLocation
   })
 
+  const filteredBuyers = buyers.filter((buyer) => {
+    const matchesSearch =
+      buyer.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      buyer.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      buyer.specialization.toLowerCase().includes(searchTerm.toLowerCase())
+    const matchesLocation = !locationFilter || buyer.location.includes(locationFilter)
+
+    return matchesSearch && matchesLocation
+  })
+
   const filteredRenewableProducts = renewableEnergyProducts.filter((product) => {
     const matchesSearch =
       product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -297,17 +370,27 @@ export default function FarmersDashboard() {
           <div className="flex items-center space-x-8">
             <Link to="/login">
               <div className="">
-                <h1 className="text-2xl font-bold text-primary text-orange-500">🌾 Harvest<span className='bg-green-600 text-white p-0.5 px-1.5 rounded'>Padi</span></h1>
+                <h1 className="text-2xl font-bold text-primary text-orange-500">
+                  🌾 Harvest<span className="bg-green-600 text-white p-0.5 px-1.5 rounded">Padi</span>
+                </h1>
               </div>
             </Link>
             <div className="flex space-x-6">
               <button
-                onClick={() => setActiveTab("tools")}
+                onClick={() => setActiveTab("sellers")}
                 className={`px-4 py-2 rounded-lg font-medium ${
-                  activeTab === "tools" ? "bg-green-100 text-green-700" : "text-gray-600 hover:text-green-600"
+                  activeTab === "sellers" ? "bg-green-100 text-green-700" : "text-gray-600 hover:text-green-600"
                 }`}
               >
-                Farm Tools
+                Sellers
+              </button>
+              <button
+                onClick={() => setActiveTab("buyers")}
+                className={`px-4 py-2 rounded-lg font-medium ${
+                  activeTab === "buyers" ? "bg-blue-100 text-blue-700" : "text-gray-600 hover:text-blue-600"
+                }`}
+              >
+                Buyers
               </button>
               <button
                 onClick={() => setActiveTab("requests")}
@@ -334,17 +417,16 @@ export default function FarmersDashboard() {
                 My Investments
               </button>
 
-            <Link to="/energy">
-              <button
-                // onClick={() => setActiveTab("renewable-energy")}
-                className={`px-4 py-2 rounded-lg font-medium ${
-                  activeTab === "renewable-energy" ? "bg-teal-100 text-teal-700" : "text-gray-600 hover:text-teal-600"
-                }`}
-              >
-                Renewable Energy
-              </button>
-            </Link>
-
+              <Link to="/energy">
+                <button
+                  // onClick={() => setActiveTab("renewable-energy")}
+                  className={`px-4 py-2 rounded-lg font-medium ${
+                    activeTab === "renewable-energy" ? "bg-teal-100 text-teal-700" : "text-gray-600 hover:text-teal-600"
+                  }`}
+                >
+                  Renewable Energy
+                </button>
+              </Link>
             </div>
           </div>
 
@@ -357,8 +439,8 @@ export default function FarmersDashboard() {
         </div>
       </nav>
 
-      {/* Search and Filters - Show for tools and renewable energy tabs */}
-      {(activeTab === "tools" || activeTab === "renewable-energy") && (
+      {/* Search and Filters - Show for sellers, buyers and renewable energy tabs */}
+      {(activeTab === "sellers" || activeTab === "buyers" || activeTab === "renewable-energy") && (
         <div className="bg-gray-50 px-6 py-4 border-b">
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-wrap gap-4 items-center">
@@ -367,47 +449,53 @@ export default function FarmersDashboard() {
                 placeholder={
                   activeTab === "renewable-energy"
                     ? "Search renewable energy products..."
-                    : "Search tools or sellers..."
+                    : activeTab === "buyers"
+                      ? "Search buyers or specializations..."
+                      : "Search tools or sellers..."
                 }
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="flex-1 min-w-64 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
               />
 
-              <select
-                value={priceFilter}
-                onChange={(e) => setPriceFilter(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
-              >
-                <option value="">All Prices</option>
-                <option value="low">Under ₦50,000</option>
-                <option value="medium">₦50,000 - ₦500,000</option>
-                <option value="high">Above ₦500,000</option>
-              </select>
+              {activeTab !== "buyers" && (
+                <>
+                  <select
+                    value={priceFilter}
+                    onChange={(e) => setPriceFilter(e.target.value)}
+                    className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                  >
+                    <option value="">All Prices</option>
+                    <option value="low">Under ₦50,000</option>
+                    <option value="medium">₦50,000 - ₦500,000</option>
+                    <option value="high">Above ₦500,000</option>
+                  </select>
 
-              <select
-                value={categoryFilter}
-                onChange={(e) => setCategoryFilter(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
-              >
-                <option value="">All Categories</option>
-                {activeTab === "renewable-energy" ? (
-                  <>
-                    <option value="Solar Energy">Solar Energy</option>
-                    <option value="Wind Energy">Wind Energy</option>
-                    <option value="Energy Storage">Energy Storage</option>
-                    <option value="Biogas">Biogas</option>
-                  </>
-                ) : (
-                  <>
-                    <option value="Seeds">Seeds</option>
-                    <option value="Fertilizers">Fertilizers</option>
-                    <option value="Tractors">Tractors</option>
-                    <option value="Solar Energy">Solar Energy</option>
-                    <option value="Irrigation">Irrigation</option>
-                  </>
-                )}
-              </select>
+                  <select
+                    value={categoryFilter}
+                    onChange={(e) => setCategoryFilter(e.target.value)}
+                    className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                  >
+                    <option value="">All Categories</option>
+                    {activeTab === "renewable-energy" ? (
+                      <>
+                        <option value="Solar Energy">Solar Energy</option>
+                        <option value="Wind Energy">Wind Energy</option>
+                        <option value="Energy Storage">Energy Storage</option>
+                        <option value="Biogas">Biogas</option>
+                      </>
+                    ) : (
+                      <>
+                        <option value="Seeds">Seeds</option>
+                        <option value="Fertilizers">Fertilizers</option>
+                        <option value="Tractors">Tractors</option>
+                        <option value="Solar Energy">Solar Energy</option>
+                        <option value="Irrigation">Irrigation</option>
+                      </>
+                    )}
+                  </select>
+                </>
+              )}
 
               <select
                 value={locationFilter}
@@ -473,7 +561,7 @@ export default function FarmersDashboard() {
           </div>
         )}
 
-        {activeTab === "tools" && (
+        {activeTab === "sellers" && (
           <div>
             <h2 className="text-3xl font-bold text-gray-900 mb-3">Farmers Tools & Equipment</h2>
             <p className="pb-8">
@@ -507,6 +595,58 @@ export default function FarmersDashboard() {
                       <button className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 text-sm font-medium">
                         Contact Seller
                       </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {activeTab === "buyers" && (
+          <div>
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">Available Buyers</h2>
+            <p className="pb-8">Connect with verified buyers looking for fresh produce and agricultural products</p>
+
+            {/* Buyers Grid */}
+            <div className="space-y-6">
+              {filteredBuyers.map((buyer) => (
+                <div
+                  key={buyer.id}
+                  className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex items-start space-x-4">
+
+                      <div className="h-10 w-10 p-6 rounded-full bg-green-100 flex justify-center items-center">
+                        <p className="text-lg font-bold text-green-800">{buyer.name.slice(0, 1)}</p>
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-center space-x-3 mb-2">
+                          <h3 className="text-xl font-semibold text-gray-900">{buyer.name}</h3>
+                          <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium">
+                            {buyer.type}
+                          </span>
+                        </div>
+                        <div className="flex items-center space-x-4 mb-2">
+                          <span className="text-gray-600 flex items-center">📍 {buyer.location}</span>
+                          <div className="flex items-center space-x-1">
+                            <span className="text-yellow-500">⭐</span>
+                            <span className="text-gray-700 font-medium">{buyer.rating} rating</span>
+                          </div>
+                        </div>
+                        <p className="text-gray-600 mb-3">{buyer.description}</p>
+                        <div className="flex items-center space-x-2 mb-2">
+                          <span className="text-green-600 font-medium">📈 {buyer.priceOffer}</span>
+                        </div>
+                        <p className="text-sm text-gray-500">Specialization: {buyer.specialization}</p>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 text-sm font-medium mb-2">
+                        Contact Buyer
+                      </button>
+                      <p className="text-xs text-gray-500">{buyer.contactInfo}</p>
                     </div>
                   </div>
                 </div>
@@ -663,107 +803,6 @@ export default function FarmersDashboard() {
             </div>
           </div>
         )}
-
-        {/* {activeTab === "post-farm" && (
-          <div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">Post New Farm Project</h2>
-            <div className="bg-white border border-gray-200 rounded-lg p-8">
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Farm Name</label>
-                    <input
-                      type="text"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                      placeholder="e.g., Sunrise Poultry Farm"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Location</label>
-                    <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
-                      <option value="">Select State</option>
-                      <option value="Lagos">Lagos</option>
-                      <option value="Kano">Kano</option>
-                      <option value="Abuja">Abuja</option>
-                      <option value="Rivers">Rivers</option>
-                      <option value="Ogun">Ogun</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Farm Type</label>
-                    <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
-                      <option value="">Select Type</option>
-                      <option value="Crop Production">Crop Production</option>
-                      <option value="Livestock">Livestock</option>
-                      <option value="Poultry">Poultry</option>
-                      <option value="Fish Farming">Fish Farming</option>
-                      <option value="Mixed Farming">Mixed Farming</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Investment Needed</label>
-                    <input
-                      type="text"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                      placeholder="e.g., ₦5,000,000"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Project Description</label>
-                  <textarea
-                    rows={4}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                    placeholder="Describe your farm project, goals, and expected returns..."
-                  ></textarea>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Expected ROI (%)</label>
-                    <input
-                      type="number"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                      placeholder="e.g., 20"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Project Duration (months)</label>
-                    <input
-                      type="number"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                      placeholder="e.g., 12"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Farm Images</label>
-                  <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
-                    <p className="text-gray-500">Click to upload or drag and drop farm images</p>
-                    <input type="file" multiple accept="image/*" className="hidden" />
-                  </div>
-                </div>
-
-                <div className="flex justify-end space-x-4">
-                  <button
-                    type="button"
-                    className="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50"
-                  >
-                    Save as Draft
-                  </button>
-                  <button type="submit" className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
-                    Post Farm Project
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        )} */}
       </main>
     </div>
   )
