@@ -563,7 +563,7 @@ export default function FarmersDashboard() {
 
         {activeTab === "sellers" && (
           <div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-3">Farmers Tools & Equipment</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">Active Sellers</h2>
             <p className="pb-8">
               A Market place where farmers needs everything to kick of there farming and make life easy for themselves
             </p>
