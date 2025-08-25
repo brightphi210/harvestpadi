@@ -4,6 +4,10 @@ import solar3 from '../src/assets/solar/solarpump.avif'
 import solar4 from '../src/assets/solar/battery.webp'
 import solar5 from '../src/assets/solar/solar-greenhouse.png'
 import solar6 from '../src/assets/solar/windturbing.jpg'
+import solar7 from '../src/assets/hydrator.webp'
+import solar8 from '../src/assets/codestorage.png'
+
+
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -18,6 +22,30 @@ const EnergyDashboard = () => {
       const navigate = useNavigate()
 
       const renewableEnergyProducts = [
+
+         {
+          id: 1,
+          name: "Solar Dehydrator Pro",
+          price: 25000,
+          category: "Solar Energy",
+          location: "Lagos",
+          seller: "Chitech Global",
+          image: solar7,
+          description: "Commercial grade solar dehydrator with 50kg capacity",
+        },
+
+         {
+          id: 1,
+          name: "Cold Storage unit 100kg",
+          price: 25000,
+          category: "Energy Storage",
+          location: "Lagos",
+          seller: "SolarTech Nigeria",
+          image: solar8,
+          description: "Energy Effecient cold storage for post-harvest preservation",
+        },
+
+
         {
           id: 1,
           name: "Solar Panel Kit 300W",

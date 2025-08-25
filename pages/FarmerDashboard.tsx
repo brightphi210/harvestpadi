@@ -34,7 +34,7 @@ export default function FarmersDashboard() {
     {
       id: 1,
       name: "Pumpkin Seeds (per kg)",
-      price: 15000,
+      price: 1500,
       category: "Seeds",
       location: "Lagos",
       seller: "AgroSeeds Nigeria",
@@ -44,7 +44,7 @@ export default function FarmersDashboard() {
     {
       id: 2,
       name: "Organic Fertilizer",
-      price: 25000,
+      price: 15000,
       category: "Fertilizers",
       location: "Kano",
       seller: "FarmChem Ltd",
@@ -54,7 +54,7 @@ export default function FarmersDashboard() {
     {
       id: 3,
       name: "Cabbage (per kg)",
-      price: 8500000,
+      price: 8500,
       category: "Seeds",
       location: "Abuja",
       seller: "AgriMachinery Nigeria",
@@ -64,7 +64,7 @@ export default function FarmersDashboard() {
     {
       id: 4,
       name: "Organic Pepper Seeds (per kg)",
-      price: 450000,
+      price: 450,
       category: "Seeds",
       location: "Kaduna",
       seller: "SolarFarm Solutions",
@@ -74,7 +74,7 @@ export default function FarmersDashboard() {
     {
       id: 5,
       name: "Organic Tomato Seeds (per kg)",
-      price: 8000,
+      price: 800,
       category: "Seeds",
       location: "Ogun",
       seller: "GreenSeeds Co",
@@ -582,10 +582,10 @@ export default function FarmersDashboard() {
                   />
                   <div className="p-6">
                     <div className="flex justify-between items-start mb-2">
-                      <h3 className="text-xl font-semibold text-gray-900">{tool.name}</h3>
-                      <span className="text-lg font-bold text-green-600">₦{tool.price.toLocaleString()}</span>
+                      <h3 className="text-lg font-semibold text-gray-900">{tool.name}</h3>
+                      <span className="text-base font-bold text-green-600">₦{tool.price.toLocaleString()}</span>
                     </div>
-                    <p className="text-gray-600 mb-3">{tool.description}</p>
+                    <p className="text-gray-600 text-sm mb-3">{tool.description}</p>
                     <div className="flex justify-between items-center text-sm text-gray-500 mb-4">
                       <span>📍 {tool.location}</span>
                       <span>🏷️ {tool.category}</span>

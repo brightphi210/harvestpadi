@@ -32,7 +32,7 @@ export default function Home() {
               Your Smart <span className="text-green-600 font-bold">Farming</span> solution
             </h1>
             <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Nigeria's premier agricultural marketplace where farmers showcase their produce, sellers find quality tools, and investors discover profitable opportunities in sustainable farming.
+              Nigeria's premier agricultural marketplace where farmers showcase their produce, Buyers find quality farm produce and tools, and investors discover profitable opportunities in sustainable farming.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/login">
